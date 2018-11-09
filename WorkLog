@@ -18,4 +18,16 @@ ssh-add ~/.ssh/ida-rsa
 - Setup Git repo
 - Installed PyCharm and set up a Python 3.7 interpreter
 
-- Downloaded anaconda
+- Downloaded anaconda and ran it in the shell
+bash ~/Downloads/Anaconda3-5.3.0-MacOSX-x86_64.sh
+
+In PyCharm, created a Conda environment
+added nltk to the environment
+
+Began hacking on some NLP stuff-ultimately followed the examples from https://www.bogotobogo.com/python/NLTK/tf_idf_with_scikit-learn_NLTK.php
+to start scoring the corpus for some relevant terms.
+
+Created a data directory with all of the CoE mana pages as well as a new hire page for baselining
+
+
+
