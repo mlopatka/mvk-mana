@@ -1,4 +1,21 @@
 9 November 2018
+
+Set up Git ssh agent
+- generated keys
+ssh-keygen -t rsa -C "mvankleeck@mozilla.com"
+ssh-add ~/.ssh/id_rsa
+cd ~/.ssh/
+touch config
+vi config
+    Host github.com-mvk-mozilla
+        HostName github.com
+        User mvk-mozilla
+        IdentityFile ~/.ssh/id_rsa
+
+(ssh-agent -s)
+ssh-add ~/.ssh/ida-rsa
+
 - Setup Git repo
 - Installed PyCharm and set up a Python 3.7 interpreter
+
 - Downloaded anaconda
