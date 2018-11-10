@@ -33,10 +33,11 @@ def tokenize(text):
         stems.append(PorterStemmer().stem(item))
     return stems
 
-def getTokenFrequenciesFromPath(path):
+def getTokenFrequenciesFromPath(path,stringToTest):
+    #based of TF-IDF example from https://www.bogotobogo.com/python/NLTK/tf_idf_with_scikit-learn_NLTK.php
+    #RENAME FUNCTION- function now does matching
    #add options for English default, removing punctuation and stopwords, and installing a cleaning pipeline
    token_dict = {}
-   #tfidf_per_file={}
    for dirpath, dirs, files in os.walk(path):
        for f in files:
            fname = os.path.join(dirpath, f)
@@ -51,8 +52,8 @@ def getTokenFrequenciesFromPath(path):
    tfs = tfidf.fit_transform(token_dict.values())
 
 
-   str = 'new hires of Mozilla culture experiment Portland'
-   response = tfidf.transform([str])
+   #str = 'new hires of Mozilla culture experiment Portland'  #string of words to compareto- MAKE THIS A PARAMETER
+   response = tfidf.transform([stringToTest])
    print ("response of transformation")
    print (response)
 
