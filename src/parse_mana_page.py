@@ -1,7 +1,8 @@
 import codecs
 import nltk
+
+#we'll be using the punkt sentence tokenizer
 nltk.download('punkt')
-import operator
 import string
 import os
 
@@ -9,12 +10,17 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem.porter import PorterStemmer
 
 from bs4 import BeautifulSoup
-from nltk import word_tokenize
-from nltk.probability import ConditionalFreqDist
+
+#unused imports from dev experimenting
+#from nltk import word_tokenize
+#from nltk.probability import ConditionalFreqDist
 
 #from matplotlib import pylab
+#import operator
 
 
+
+#this is the tokenizer method used by the TfidfVectorizer
 def tokenize(text):
     tokens = nltk.word_tokenize(text)
     stems = []
@@ -26,12 +32,6 @@ def docFromFile(path):
    f = codecs.open(path, 'r', 'utf-8')
    return BeautifulSoup(f.read()).getText()
 
-def tokenize(text):
-    tokens = nltk.word_tokenize(text)
-    stems = []
-    for item in tokens:
-        stems.append(PorterStemmer().stem(item))
-    return stems
 
 def getTokenFrequenciesFromPath(path,stringToTest):
     #based of TF-IDF example from https://www.bogotobogo.com/python/NLTK/tf_idf_with_scikit-learn_NLTK.php
