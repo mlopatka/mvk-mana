@@ -29,5 +29,7 @@ to start scoring the corpus for some relevant terms.
 
 Created a data directory with all of the CoE mana pages as well as a new hire page for baselining
 
+TO PORT THE ENVIRONMENT- created the spec_list following the Anaconda docs fir building identical environments, then used conda install on the new box with the spec list (see https://conda.io/docs/user-guide/tasks/manage-environments.html)
+
 
 
