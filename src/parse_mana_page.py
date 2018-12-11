@@ -28,6 +28,8 @@ def tokenize(text):
         stems.append(PorterStemmer().stem(item))
     return stems
 
+
+#opens an exported Mana file and uses BeautifulSoup to parse it
 def docFromFile(path):
    f = codecs.open(path, 'r', 'utf-8')
    return BeautifulSoup(f.read()).getText()
@@ -41,16 +43,19 @@ def getTokenFrequenciesFromPath(path,stringToTest):
    for dirpath, dirs, files in os.walk(path):
        for f in files:
            fname = os.path.join(dirpath, f)
-           print ("fname=", fname)
+           print ("filename=", fname)
            with open(fname) as pearl:
-               text = pearl.read()
+               text=docFromFile(fname)
+               #text2 = pearl.read()  --using the BeautifulSoup parsing insted
                token_dict[f] = text.lower().translate(string.punctuation)
                #tfidfPerFile = TfidfVectorizer(tokenizer=tokenize, stop_words='english')
                #tfidf_per_file[fname]=tfidfPerFile.fit_transform(token_dict[f])
 
    tfidf = TfidfVectorizer(tokenizer=tokenize, stop_words='english')
    tfs = tfidf.fit_transform(token_dict.values())
-
+#   print ("Features:"+ str(tfidf.get_feature_names().__len__()))
+   print ("Features: "+str(tfidf.get_feature_names()))
+   print ("Shape:" + str(tfs.shape))
 
    #str = 'new hires of Mozilla culture experiment Portland'  #string of words to compareto- MAKE THIS A PARAMETER
    response = tfidf.transform([stringToTest])
@@ -60,6 +65,7 @@ def getTokenFrequenciesFromPath(path,stringToTest):
    feature_names = tfidf.get_feature_names()
    for col in response.nonzero()[1]:
        print (feature_names[col], ' - ', response[0, col])
+
 
     #feature_names_per_file=
 
